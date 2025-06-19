@@ -131,3 +131,11 @@ uint256 price = SimpleSwap(simpleSwapAddress).getPrice(tokenA_address, tokenB_ad
 // For instance, if price = 1e18, then 1 TokenA = 1 TokenB
 // if price = 2e18, then 1 TokenA = 2 TokenB
 console.log("Price of TokenA in terms of TokenB:", price);
+
+
+Audit Considerations & Security
+Reentrancy Protection: The nonReentrant modifier is used on critical functions to prevent reentrancy attacks.
+Slippage Control: amountAMin, amountBMin, and amountOutMin parameters help users protect against unfavorable price movements during liquidity provision and swaps.
+Transaction Deadlines: The deadline parameter prevents transactions from being executed long after they were intended.
+Price Manipulation: Like all AMMs, this contract is susceptible to sandwich attacks and impermanent loss. Users should be aware of these risks.
+Gas Optimization: While functional, further gas optimizations could be explored for a production environment.
